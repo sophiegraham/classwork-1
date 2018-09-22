@@ -2,7 +2,7 @@
 
 ## Questions and Feedback
 
-* This is all normal (and [it works](grads.png))...
+* This is all normal
 * Improving pace: reduce cycle time when "you don't know"
     * No one is coming to save you :(
     * You are not expected to know :)
