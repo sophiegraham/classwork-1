@@ -11,18 +11,29 @@ Use NodeJS to develop JavaScript outside of the browser.
 
 * NodeJS
 * npm
-* Testing (mocha)
+* Testing (jest)
 
 ## Setup
 
 * new `.eslintrc`
-* Change tab spaces to `4`
+    * Change tab spaces to `4`
+    * `env`
+        * `node`
+        * `jest`
+    * Adds EOL check
+        * Enable in VSCode: `files.insertFinalNewline: true`
 
-## DEMO
+### NodeJS
 
-Greeting app
+* Version 10
+* Check via `node --version`
+* Some people like to use `nvm` to handle multiple versions
 
-What are responsibilities?
+## App???
+
+** Examine Easy Greeting App**
+
+## Unit of Running Code???
 
 * Has core "library"
 * CLI App?
@@ -49,20 +60,14 @@ What are responsibilities?
     * Client, Server [, Database]
 * Some systems are "Headless" - pure logic and execution, no UI
 
-### NodeJS
-
-* Version 10
-* Check via `node --version`
-* Some people like to use `nvm` to handle multiple versions
-
 ### npm (Node Package Manager)
 
 * Tooling for us to manage our build environment
 * Repository for open source packages
 * `npm init`
 * `npm install eslint --save-dev`
-* `npm install mocha --save-dev`
-* add script: `"test": "mocha"`
+* `npm install jest --save-dev`
+* add script: `"test": "jest"`
 
 ### Testing
 
@@ -71,7 +76,7 @@ Test-First (TDD) Testing in calling out responsibilities and expectations for th
 Code meant to be consumed by other code (modules and libraries)
 is most straight-forward to test.
     
-* mocha
+* jest
     * Test-Runner
     * Used via CLI
     * test: `it`
