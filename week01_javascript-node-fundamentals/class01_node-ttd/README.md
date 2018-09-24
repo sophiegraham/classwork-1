@@ -51,7 +51,7 @@ What are responsibilities?
 
 ### NodeJS
 
-* Version 8 (everything but ESModule!)
+* Version 10
 * Check via `node --version`
 * Some people like to use `nvm` to handle multiple versions
 
@@ -86,10 +86,6 @@ is most straight-forward to test.
 ### Config
 
 [Essentials listed in lab](https://github.com/acl-401-js-fall-2017/submit-401-way/blob/master/LAB.md)
-
-## Submit 401 Lab
-
-* In-class exercises
 
 ## `greet` demo
 
