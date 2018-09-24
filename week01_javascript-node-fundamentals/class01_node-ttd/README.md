@@ -91,6 +91,6 @@ is most straight-forward to test.
 
 * In-class exercises
 
-## `some` demo
+## `greet` demo
 
 Setup for today's lab
