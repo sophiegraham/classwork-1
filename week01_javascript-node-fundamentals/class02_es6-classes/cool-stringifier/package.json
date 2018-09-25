@@ -8,13 +8,14 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "start": "npm run test -- -w"
   },
   "author": "Marty Nelson <marty@martypdx.com>",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^5.0.0",
-    "mocha": "^5.2.0"
+    "jest": "^23.6.0"
   }
 }

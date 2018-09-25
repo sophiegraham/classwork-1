@@ -1,15 +1,12 @@
 {
   "parserOptions": {
-    "ecmaVersion": 8,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
-    }
+    "ecmaVersion": 9,
+    "sourceType": "module"
   },
   "env": {
     "es6": true,
     "node": true,
-    "mocha": true
+    "jest": true
   },
   "extends": ["eslint:recommended"],
   "rules": {
@@ -22,6 +19,7 @@
       "object-curly-spacing": ["error", "always"],
       "comma-spacing": "error",
       "space-before-function-paren": ["error", "never"],
+      "eol-last": ["error", "always"],
       "keyword-spacing": [
         "error", 
         { 
