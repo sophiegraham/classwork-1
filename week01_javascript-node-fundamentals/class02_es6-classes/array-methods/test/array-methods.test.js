@@ -64,6 +64,11 @@ describe('some', () => {
             return isEven(item)
         })
 
+        list.some(item => {
+            called.push(item);
+            return isOdd(item)
+        })
+
         assert.deepEqual(called, [1, 2]);
     })
 
