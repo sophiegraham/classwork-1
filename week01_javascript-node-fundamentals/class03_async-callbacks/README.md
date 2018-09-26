@@ -1,4 +1,4 @@
-# Class 02 Node Architecture and Asynchronous Programming
+# Class 03 Node Architecture and Asynchronous Programming
 
 ## Questions and Feedback
 
