@@ -1,3 +1,4 @@
+/* eslint no-console: off, no-unused-vars: off */
 const fs = require('fs');
 const http = require('http');
 const request = require('superagent');
