@@ -2,6 +2,8 @@
 
 ## Questions and Feedback
 
+* gitignore global
+* eslint
 * ?
 
 ## Learning Objectives
@@ -31,12 +33,10 @@
 * How do we
     * return values?
     * Propagate errors?
-* "Old School" Node callback pattern: `callback(err, result)`
-* Promises FTW!
-* ~~Promises~~ `async`/`await` FTW!
-* Wrapping with promises
-    * `require('util').promisify` for node callbacks
-    * `new Promise((resolve, reject) => { /*...*/ })`
+* JavaScript Async Callback Styles
+    * "Old School" Node callback pattern: `callback(err, result)`
+    * Promises FTW!
+    * ~~Promise FTW!s~~ `async`/`await` FTW!
 * Some hard rules:
     1. You can't create asynchronicity with just js
     1. If your building functionality on top of asynchronous APIs, then your library must be asynchronous!
@@ -45,21 +45,15 @@
 
 ### Demo: Copy Dir
 
-* ~~Mocha `done`~~
+* ~~Jest `done`~~
 	* test parameter
 	* Tests function.length
 	* if > 0, test is async
 	* calling done with any non-null argument is failure (matches node callback signature)
 * and node `fs` module
-* Mocha `before` and friends
+* Jest `beforeEach` and friends
 * Orchestration?
 	* Sequential
 	* Parallel
 		* Async order is "completion" based
 
-**Demo:** Test drive "copy dir"
-
-### Demo `CoolStringifier`
-
-* ES6 Classes
-* Hold onto state

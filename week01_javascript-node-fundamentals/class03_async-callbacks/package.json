@@ -5,9 +5,10 @@
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint .",
-    "test:mocha": "mocha --reporter mocha-better-spec-reporter",
-    "test": "npm run test:mocha",
-    "start": "npm run test:mocha -- -w"
+    "pretest": "npm run lint",
+    "test:run": "jest",
+    "test": "npm run test:run",
+    "start": "npm run test:run -- --watch"
   },
   "author": "Marty Nelson <marty@martypdx.com>",
   "license": "ISC",
@@ -16,8 +17,7 @@
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
-    "eslint": "^5.0.1",
-    "mocha": "^5.2.0",
-    "mocha-better-spec-reporter": "^3.1.0"
+    "eslint": "^5.6.0",
+    "jest": "^23.6.0"
   }
 }
