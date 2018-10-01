@@ -35,7 +35,7 @@ Class 06: TCP Servers
 * Port
 * Socket
 
-### Review
+### Streams as Event Emitters
 
 * Streams
     * as event emitters:
