@@ -4,12 +4,11 @@ Class 06: TCP Servers
 ## Feedback/Questions
 
 * Surveys
-    * First week was hard (normal)
-    * People appreciated direction in labs
-    * "Reading Assignment" responses
-* Review upcoming week
-* Code as Thinking
-* Bitmap?
+    * Week 1 went out today, please complete ASAP
+    * Future surveys:
+        * Go out at **5:45PM** on Friday
+        * Reminder email on Saturday if not done
+        * Due Sunday evening **11:45PM**
 
 ## Today's Learning Objectives
 
