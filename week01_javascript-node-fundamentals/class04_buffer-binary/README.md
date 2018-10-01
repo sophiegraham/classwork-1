@@ -2,24 +2,6 @@
 
 ## Questions and Feedback
 
-* This is all normal
-* Improving pace: reduce cycle time when "you don't know"
-    * No one is coming to save you :(
-    * You are not expected to know :)
-    * Your insights ("not knowings") are valuable!
-    * You are expected to own it, be proactive, and advocate:
-        * Narrow down the scope of what it is you don't know
-        * Define what it is you need?
-        * Use peers and TAs
-* Do your learning in public (within alchemy)
-    * Requisite for above items
-    * Use first 30 minutes of class
-* Remove code noise:
-    * Copied class code left in labs
-    * Remove pseudo-code comments
-* Read your own code more (when you think you are "done")
-    * Think about what choices exist
-    * Ask for others to review
 * ?
 
 ## Learning Objectives
