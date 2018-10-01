@@ -6,22 +6,8 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-const socket = net.connect(15678, () => {
-    rl.setPrompt('');
-    rl.prompt();
-
-    rl.on('line', input => {
-        socket.write(input);
-    });
-    
-    socket.on('data', data => {
-        console.log(/*'server sez:', */ data);
-    });
-
-    socket.on('close', () => {
-        console.log('server left :(');
-        socket.destroy();
-    });
-});
-
-socket.setEncoding('utf8');
+// connect
+// on line
+// on data
+// on close
+// setEncoding

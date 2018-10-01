@@ -1,7 +1,27 @@
-const dgram = require('dgram');
+const net = require('net');
+const readline = require('readline');
 
-const client = dgram.createSocket('udp4');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-client.send('hi', 41234);
-client.send('hi', 41234);
-client.send('hi', 41234);
+const socket = net.connect(7890, () => {
+    rl.setPrompt('');
+    rl.prompt();
+
+    rl.on('line', input => {
+        socket.write(input);
+    });
+    
+    socket.on('data', data => {
+        console.log('server sez:', data);
+    });
+
+    socket.on('close', () => {
+        console.log('server left :(');
+        socket.destroy();
+    });
+});
+
+socket.setEncoding('utf8');

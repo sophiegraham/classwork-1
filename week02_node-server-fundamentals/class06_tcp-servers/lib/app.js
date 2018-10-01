@@ -19,3 +19,8 @@ module.exports = net.createServer(client => {
             .forEach(c => c.write(message));
     });
 });
+
+
+// createServer
+// on data
+//on end

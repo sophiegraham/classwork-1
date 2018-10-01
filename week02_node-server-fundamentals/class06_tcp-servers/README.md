@@ -27,14 +27,6 @@ Class 06: TCP Servers
 
 ## Agenda
 
-### Distributed Systems FTW!
-
-* Server
-* Client
-* Process
-* Port
-* Socket
-
 ### Streams as Event Emitters
 
 * Streams
@@ -44,6 +36,14 @@ Class 06: TCP Servers
 * Files as streams
     * Demo `fs.createReadStream()`
 * (re)introducing: `pipe`
+
+### Distributed Systems FTW!
+
+* Server
+* Client
+* Process
+* Port
+* Socket
 
 ### TCP
 
