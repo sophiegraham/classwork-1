@@ -1,0 +1,20 @@
+{
+  "name": "tcp-chat-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test:run": "mocha",
+    "test": "npm run test:run",
+    "test:dev": "npm run test:run -- -w",
+    "start": "node server.js"
+  },
+  "author": "Marty Nelson <marty@martypdx.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.1.0",
+    "jest": "^23.6.0"
+  }
+}
