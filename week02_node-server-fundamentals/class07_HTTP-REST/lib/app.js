@@ -7,4 +7,15 @@ module.exports = (req, res) => {
     // use node's built in url parser
     const url = parse(req.url, true);     
     const parts = url.pathname.split('/').slice(1);
+
+    bodyParser(req)
+        .then(body => {
+            return 1;
+        })
+        .then(one => {
+
+        })
+        .catch(err => {
+            
+        });
 };

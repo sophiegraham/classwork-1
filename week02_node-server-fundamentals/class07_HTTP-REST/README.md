@@ -13,7 +13,7 @@
 	* `method` (verb) 
 	* Other request factors (`query`, `content-type`)
 1. E2E servers using Jest (and supertest for HTTP)
-
+S
 ## Tool Review
 
 * [Postman](https://www.getpostman.com/)
@@ -33,6 +33,11 @@ An envelop with a letter (or a postcard)
 * Method (verbs): 
 	* GET, POST, PUT, DELETE, PATCH
 	* plus more ...
+	* CRUD
+		* POST - CREATE
+		* GET - READ
+		* PUT - UPDATE
+		* DELETE - DELETE
 * REST
 	* [understanding REST](https://spring.io/understanding/REST)
 	* Resources (nouns!)
