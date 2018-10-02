@@ -1,15 +1,22 @@
 
 module.exports = function bodyParser(req) {
     return new Promise((resolve, reject) => {
-        if(req.headers['content-type'] !== 'application/json') {
-            return reject('not json');
+        if(req.header['content-type'] !== 'application/json') {
+            return reject('we need json');
         }
 
-        let body = '';
-        req.on('data', data => body += data);
-        req.on('end', () => {
-            resolve(JSON.parse(body));
+        let data = '';
+        req.on('data', chunk => {
+            data += chunk;
         });
-        req.on('error', reject);
+
+        req.on('end', () => {
+            const json = JSON.parse(data);
+            resolve(json);
+        });
+
+        req.on('error', err => {
+            reject(err);
+        });
     });
 };

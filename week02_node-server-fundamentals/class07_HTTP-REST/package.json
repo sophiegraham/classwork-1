@@ -7,7 +7,7 @@
     "lint": "eslint .",
     "jest": "jest",
     "test": "npm run jest",
-    "test:watch": "nodemon --exec 'npm run jest -s'",
+    "test:watch": "npm run jest -- --watch",
     "start": "node server.js",
     "start:watch": "nodemon server.js"
   },
