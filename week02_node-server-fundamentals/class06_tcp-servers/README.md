@@ -21,6 +21,7 @@ Class 06: TCP Servers
 * [Networking layers](https://drawings.jvns.ca/layers/)
 * [Packets](https://drawings.jvns.ca/packet/)
 * [DNS](https://drawings.jvns.ca/dns/) (see also https://howdns.works/ep1/)
+* [DNS](https://howdns.works)
 * [TCP](https://drawings.jvns.ca/tcp-1/)
 * [OSI vs TCP/IP Model](http://www.tcpipguide.com/free/diagrams/tcpiplayers.png)
 * [OSI Model](http://blog.buildingautomationmonthly.com/wp-content/uploads/2013/05/OSI-Model.png)
@@ -44,6 +45,10 @@ Class 06: TCP Servers
 * Process
 * Port
 * Socket
+
+### UDP
+
+#### Short-lived
 
 ### TCP
 

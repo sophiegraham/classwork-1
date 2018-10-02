@@ -2,7 +2,17 @@ const dgram = require('dgram');
 
 const server = dgram.createSocket('udp4');
 
-// on error
-// on message (rinfo.port)
-// on listening (server.address())
-// bind
+server.on('error', err => {
+    console.log('error', err)
+});
+
+server.on('message', msg => {
+    console.log(msg.toString());
+});
+
+server.on('listening', () => {
+    console.log('listening');
+});
+
+
+server.bind(7890);

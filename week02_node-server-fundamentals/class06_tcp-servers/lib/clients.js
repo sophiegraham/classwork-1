@@ -5,8 +5,10 @@ module.exports = class Clients {
     }
 
     add(client) {
-        client.username = `user${this.userNumber++}`;
+        const name = this.userNumber++;
+        client.username = `user${name}`;
         this.set.add(client);
+        return client;
     }
 
     remove(client) {
@@ -14,10 +16,10 @@ module.exports = class Clients {
     }
 
     getAllClients() {
-        return [...this.set.values()];
+        return [...this.set];
     }
 
     getBroadcastClients(client) {
-        return this.getAllClients().filter(c => c !== client);
+        return this.getAllClients().filter(c => c !== client);       
     }
 };

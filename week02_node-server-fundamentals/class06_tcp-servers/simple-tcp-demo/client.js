@@ -6,8 +6,22 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-// connect
-// on line
-// on data
-// on close
-// setEncoding
+const client = net.connect(15678, () => {
+    rl.setPrompt('');
+    rl.prompt();
+
+    rl.on('line', input => {
+        client.write(input);
+    });
+    
+    client.on('data', data => {
+        console.log('server sez:', data);
+    });
+
+    client.on('close', () => {
+        console.log('server left :(');
+        client.destroy();
+    });
+});
+
+client.setEncoding('utf8');
