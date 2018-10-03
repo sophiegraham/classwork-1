@@ -34,7 +34,7 @@ describe('twitter clone', () => {
             });
     });
 
-    it.only('returns 404 when there is no method', () => {
+    it('returns 404 when there is no method', () => {
         return request(app)
             .patch('/tweets')
             .send({})
