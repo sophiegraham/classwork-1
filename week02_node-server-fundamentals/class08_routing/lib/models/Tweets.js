@@ -28,6 +28,6 @@ class Tweets {
     delete(id) {
         this.tweets.delete(id);
     }
-};
+}
 
 module.exports = new Tweets();

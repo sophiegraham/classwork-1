@@ -1,6 +1,12 @@
 const { parse } = require('url');
 const bodyParser = require('./body-parser');
-const Tweets = require('./models/Tweets');
+const tweets = require('./routes/tweets');
+const notFound = require('./routes/not-found');
+
+const routes = {
+    tweets,
+    // posts
+};
 
 module.exports = (req, res) => {
     const url = parse(req.url);
@@ -8,18 +14,17 @@ module.exports = (req, res) => {
 
     res.setHeader('Content-Type', 'application/json');
 
+    // /tweets/:id -> tweets
+    const resource = parts[0];
+
+    // routes.tweets
+    const route = routes[resource] || notFound;
+    req.id = parts[1];
+
+    res.send = data => res.end(JSON.stringify(data));
+
     bodyParser(req).then(body => {
-        if(req.method === 'GET' && parts[0] === 'tweets' && parts[1]) {
-            const id = parts[1];
-            const tweet = Tweets.get(id);
-            res.end(JSON.stringify(tweet));
-        } else if(req.method === 'GET' && parts[0] === 'tweets') {
-            const tweets = Tweets.getAll();
-            res.end(JSON.stringify(tweets));
-        } else if(req.method === 'POST' && parts[0] === 'tweets') {
-            const { username, text } = body;
-            const tweet = Tweets.create(username, text);
-            res.end(JSON.stringify(tweet));
-        }
+        req.body = body;
+        route(req, res);
     });
 };
