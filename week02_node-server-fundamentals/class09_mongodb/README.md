@@ -37,12 +37,12 @@ Class 09 MongoDB
 1. Extract:
 	* double click, **or**
 1. Move to home:
-	* `> mv ~/Downloads/mongodb-osx-x86_64-4.0.2 ~/`
-	* `> mv mongodb-osx-x86_64-4.0.2 mongodb`
+	* `> mv ~/Downloads/mongodb-osx-x86_64-4.0.2 ~/mongodb`
 1. Add data directory
 	* `> mkdir ~/mongodb/data`
 1. Add to path to mongo bin in `.bash_profile`:
 	* `> export PATH=$PATH:~/mongodb/bin`
+    * `source ~/.bash_profile`
 1. Test from **new** terminal window:
 	* `> mongod --dbpath ~/mongodb/data`
 1. Add alias in `.bash_profile`
