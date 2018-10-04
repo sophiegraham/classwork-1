@@ -37,8 +37,8 @@ Class 09 MongoDB
 1. Extract:
 	* double click, **or**
 1. Move to home:
-	* `> mv ~/Downloads/mongodb-osx-x86_64-3.6.3 ~/`
-	* `> mv mongodb-osx-x86_64-3.6.3 mongodb`
+	* `> mv ~/Downloads/mongodb-osx-x86_64-4.0.2 ~/`
+	* `> mv mongodb-osx-x86_64-4.0.2 mongodb`
 1. Add data directory
 	* `> mkdir ~/mongodb/data`
 1. Add to path to mongo bin in `.bash_profile`:
@@ -54,7 +54,7 @@ Class 09 MongoDB
 	* Windows Key then search "path"
 	* Open Environment Variables
 	* Chose `Path` from **System** Variables and click "Edit"
-	* Click "New" and paste path to `C:/Program Files/Mongodb/server/3.6/bin`
+	* Click "New" and paste path to `C:/Program Files/Mongodb/server/4.0/bin`
 1. Add folder(s)
 	* `C:\data\db`
 
