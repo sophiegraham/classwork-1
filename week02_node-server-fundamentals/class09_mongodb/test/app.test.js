@@ -1,11 +1,35 @@
+require('dotenv').config();
 const request = require('supertest');
-const nock = require('nock');
 const app = require('../lib/app');
+const Tweets = require('../lib/models/Tweets');
 
 describe('twitter clone', () => {
-    it('gets all tweets', () => {
-        return nock(app).get('/tweets').then(res => {
-            expect(res.text).toEqual('[]');
+    const tweets = [
+        { username: 'ryan', text: 'my tweet' },
+        { username: 'me', text: 'my other tweet' }
+    ];
+
+    let createdTweets;
+
+    const creator = tweet => {
+        return request(app).post('/tweets')
+            .send(tweet);
+    };
+
+    beforeEach(() => {
+        return Tweets.drop();
+    });
+
+    beforeEach(() => {
+        return Promise.all(tweets.map(creator))
+            .then(ts => {
+                createdTweets = ts.map(t => t.body);
+            });
+    });
+
+    it.only('gets all tweets', () => {
+        return request(app).get('/tweets').set('Accept', 'application/json').then(res => {
+            expect(res.body).toEqual(createdTweets);
         });
     });
 
@@ -13,25 +37,18 @@ describe('twitter clone', () => {
         return request(app).post('/tweets')
             .send({ username: 'me', text: 'my tweet' })
             .then(res => {
-                const json = JSON.parse(res.text);
-                expect(json.text).toEqual('my tweet');
-                expect(json.username).toEqual('me');
-                expect(json.id).toEqual(expect.any(String));
+                expect(res.body).toEqual({
+                    _id: expect.any(String),
+                    username: 'me',
+                    text: 'my tweet'
+                });
             });
     });
 
     it('get a tweet by id', () => {
-        return request(app).post('/tweets')
-            .send({ username: 'me', text: 'my tweet' })
-            .then(createRes => {
-                const { id } = JSON.parse(createRes.text);
-                return request(app).get(`/tweets/${id}`);
-            })
-            .then(getRes => {
-                const tweet = JSON.parse(getRes.text);
-                expect(tweet.id).toEqual(expect.any(String));
-                expect(tweet.username).toEqual(expect.any(String));
-                expect(tweet.text).toEqual(expect.any(String));
+        return request(app).get(`/tweets/${createdTweets[0]._id}`)
+            .then(res => {
+                expect(res.body).toEqual(createdTweets[0]);
             });
     });
 

@@ -4,21 +4,15 @@ const notFound = require('./not-found');
 const get = (req, res) => {
     const { id } = req;
     if(id) {
-        const tweet = Tweets.get(id);
-        //res.send(tweet);
-        res.end(JSON.stringify(tweet));
+        Tweets.get(id).then(res.send);
     } else {
-        const tweets = Tweets.getAll();
-        //res.send(tweets);
-        res.end(JSON.stringify(tweets));
+        Tweets.getAll().then(res.send);
     }
 };
 
 const post = (req, res) => {
     const { username, text } = req.body;
-    const tweet = Tweets.create(username, text);
-    res.send(tweet);
-    //res.end(JSON.stringify(tweet));
+    Tweets.create(username, text).then(res.send);
 };
 
 const methods = {

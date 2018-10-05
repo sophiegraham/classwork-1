@@ -24,6 +24,14 @@ class Tweets {
             });
     }
 
+    getAll() {
+        return db('tweets')
+            .then(collection => {
+                return collection.find();
+            })
+            .then(tweetsDocObject => tweetsDocObject.toArray());
+    }
+
     drop() {
         return db('tweets').then(collection => collection.deleteMany());
     }
