@@ -35,24 +35,6 @@ class Tweets {
     drop() {
         return db('tweets').then(collection => collection.deleteMany());
     }
-
-    // get(id) {
-    //     return this.tweets.get(id);
-    // }
-
-    // getAll() {
-    //     return [...this.tweets.values()];
-    // }
-
-    // update(id, newText) {
-    //     const tweet = this.tweets.get(id);
-    //     tweet.text = newText;
-    //     return tweet;
-    // }
-
-    // delete(id) {
-    //     this.tweets.delete(id);
-    // }
 }
 
 module.exports = new Tweets();
