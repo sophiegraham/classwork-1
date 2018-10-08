@@ -13,6 +13,7 @@
 	* Review week module
 * Making a template
 * ?
+* [jq](https://stedolan.github.io/jq/)
 
 ## Today's Learning Objectives
 
