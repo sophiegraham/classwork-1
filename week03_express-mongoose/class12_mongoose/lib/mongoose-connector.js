@@ -1,22 +1,28 @@
+/* eslint-disable  no-console */
 const { parse } = require('url');
 const mongoose = require('mongoose');
 
+const log = (event, dbUrl) => {
+    return () => {
+        console.log(`${event.toUpperCase()}: connection to ${dbUrl}`);
+    };
+};
+
 const redactURLAuth = url => {
     const parsedUrl = parse(url);
+    // mongodb://ryan:nuhohutnhoentuheont@172.17.0.2:27017/class -> mongodb://***:***@172.17.0.2:27017/class    
     const redactedAuth = parsedUrl.auth ? '***:***@' : '';
     return `${parsedUrl.protocol}://${redactedAuth}${parsedUrl.hostname}:${parsedUrl.port}${parsedUrl.path}`;
 };
 
-const log = (event, url) => () => console.log(`${event.toUpperCase()}: Mongo at ${url}`);
+module.exports = (dbUrl = process.env.MONGODB_URI) => {
+    mongoose.connect(dbUrl, { useNewUrlParser: true });
 
-module.exports = (connectionUrl = process.env.MONGODB_URI) => {
-    const safeConnectionUrl = redactURLAuth(connectionUrl);
+    const redactedUrl = redactURLAuth(dbUrl);
 
-    mongoose.connect(connectionUrl, { useNewUrlParser: true });
+    mongoose.connection.on('error', log('error', redactedUrl));
 
-    mongoose.connection.on('open', log('open', safeConnectionUrl));
+    mongoose.connection.on('open', log('open', redactedUrl));
 
-    mongoose.connection.on('error', log('error', safeConnectionUrl));
-
-    mongoose.connection.on('close', log('close', safeConnectionUrl));
+    mongoose.connection.on('close', log('close', redactedUrl));
 };

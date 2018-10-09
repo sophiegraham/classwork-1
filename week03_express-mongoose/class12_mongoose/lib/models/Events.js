@@ -9,7 +9,7 @@ class Events {
             })
             .then(results => results.ops[0]);
     }
-
+    
     getAll() {
         return db('events')
             .then(collection => {
