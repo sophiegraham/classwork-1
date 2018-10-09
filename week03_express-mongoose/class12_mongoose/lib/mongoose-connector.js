@@ -12,7 +12,7 @@ const redactURLAuth = url => {
     const parsedUrl = parse(url);
     // mongodb://ryan:nuhohutnhoentuheont@172.17.0.2:27017/class -> mongodb://***:***@172.17.0.2:27017/class    
     const redactedAuth = parsedUrl.auth ? '***:***@' : '';
-    return `${parsedUrl.protocol}://${redactedAuth}${parsedUrl.hostname}:${parsedUrl.port}${parsedUrl.path}`;
+    return `${parsedUrl.protocol}//${redactedAuth}${parsedUrl.hostname}:${parsedUrl.port}${parsedUrl.path}`;
 };
 
 module.exports = (dbUrl = process.env.MONGODB_URI) => {

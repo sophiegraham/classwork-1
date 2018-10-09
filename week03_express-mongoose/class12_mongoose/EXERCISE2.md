@@ -13,8 +13,3 @@ Add Validation
     * `founded` - Date
     * `isHip` - Boolean
     * `keywords` - Array of Strings each max 100 characters
-
-# Add Failed Validation Tests
-
-* Combine as many validation errors as makes sense
-* `validate()` is _expected_ to fail (returns obj with prop `errors` - dictionary by field path)
