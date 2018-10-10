@@ -11,6 +11,7 @@ const handler = (err, req, res, next) => {
         console.log('own error', err.name);
     }
     else if(err.name === 'CastError' || err.name === 'ValidationError') {
+        // Mongoose errors
         code = 400;
         error = err.message;
     }

@@ -1,11 +1,10 @@
-require('dotenv').config();
 const { dropCollection } = require('./db');
 const request = require('supertest');
 const app = require('../../lib/app');
 const Chance = require('chance');
 const chance = new Chance();
 
-describe('event pub/sub API', () => {
+xdescribe('event pub/sub API', () => {
     let events = Array.apply(null, { length: 100 }).map(() => {
         return {
             type: 'purchase',

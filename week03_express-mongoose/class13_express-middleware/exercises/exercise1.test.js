@@ -24,10 +24,17 @@ const Quote = mongoose.model('Quote', quoteSchema);
 
 
 app.get('/quotes', (req, res) => {
-    // Write an express route that finds all quotes or all quotes by a 
-    // particular author if a author query is provided. Use select()
-    // to remove the __v field from the returned value. Use lean() to
-    // return plain JavaScript objects
+    const { author } = req.query;
+    let search = {};
+    if(author) {
+        search.author = author;
+        // { author: 'Walter White' }
+    }
+
+    Quote.find(search)
+        .select({ __v: false })
+        .lean()
+        .then(quotes => res.json(quotes));
 });
 
 let createdQuotes = [];
@@ -54,16 +61,6 @@ test('test quotes', () => {
 
 test('test search quotes', () => {
     return request(app).get('/quotes?author=Walter White').then(res => {
-        createdQuotes
-            .filter(quote => quote.author === 'Walter White')
-            .forEach(quote => {
-                expect(res.body).toContainEqual({ ...quote, _id: quote._id.toString() });
-            });
-    });
-});
-
-test('test search quotes length', () => {
-    return request(app).get('/quotes?length=1000').then(res => {
         createdQuotes
             .filter(quote => quote.author === 'Walter White')
             .forEach(quote => {
