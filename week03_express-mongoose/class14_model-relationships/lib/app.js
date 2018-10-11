@@ -14,8 +14,10 @@ app.use(express.static('public'));
 app.use(express.json());
 
 const events = require('./routes/events');
-
 app.use('/api/events', events);
+
+const subscribers = require('./routes/subscribers');
+app.use('/api/subscribers', subscribers);
 
 app.use((req, res) => {
     console.log('This is 404');

@@ -18,10 +18,16 @@
 #### Data Relationships
 
 * one to one
+    * SSN
+    * a finger print
+    * soul
 * one to many
-    * Intra-document
-    * Separate document
+    * email
+    * author -> books
+    * commenter -> comment
 * many to many
+    * comments -> tags
+    * bank accounts
 
 #### Relating Models
 
