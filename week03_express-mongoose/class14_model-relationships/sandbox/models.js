@@ -1,14 +1,25 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://172.17.0.2:27017/class', { useNewUrlParser: true });
 
+const addressSchema = mongoose.Schema({
+    zipcode: String,
+    street: String,
+    city: String,
+    state: String
+});
+
 const customerSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
     },
     address: {
-        type: String,
-        required: true
+        shipping: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Address',
+            required: true
+        },
+        preferred: Boolean
     },
     preferredName: String
 });
@@ -23,6 +34,7 @@ const purchaseSchema = mongoose.Schema({
     customer: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer' }
 });
 
+const Address = mongoose.model('Address', addressSchema);
 const Customer = mongoose.model('Customer', customerSchema);
 const Purchase = mongoose.model('Purchase', purchaseSchema);
 
