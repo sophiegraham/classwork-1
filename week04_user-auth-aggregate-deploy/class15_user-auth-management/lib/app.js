@@ -10,6 +10,9 @@ app.use(morgan('dev', {
     }
 }));
 
+const auth = require('./routes/auth');
+app.use('/api/auth', auth);
+
 app.use(express.static('public'));
 app.use(express.json());
 
