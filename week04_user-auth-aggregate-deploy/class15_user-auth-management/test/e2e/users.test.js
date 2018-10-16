@@ -7,6 +7,12 @@ const Chance = require('chance');
 const chance = new Chance();
 
 
+const checkStatus = statusCode => res => {
+    expect(res.status).toEqual(statusCode);
+};
+
+const checkOk = res => checkStatus(200)(res);
+
 describe('user routes', () => {
     const users = Array.apply(null, { length: 1 })
         .map(() => ({ name: chance.name(), clearPassword: chance.word(), email: chance.email() }));
@@ -58,6 +64,27 @@ describe('user routes', () => {
 
         expect(validCompare).toBeTruthy();
         expect(invalidCompare).toBeFalsy();
+    });
+
+    it('signs in a user', () => {
+        return request(app)
+            .post('/api/auth/signin')
+            .send({ email: createdUsers[0].email, clearPassword: users[0].clearPassword })
+            .then(checkOk);
+    });
+
+    it('rejects signing in a bad user', () => {
+        return request(app)
+            .post('/api/auth/signin')
+            .send({ email: createdUsers[0].email, clearPassword: `${users[0].clearPassword}1234` })
+            .then(checkStatus(401));
+    });
+
+    it('rejects signing in a user with bad email', () => {
+        return request(app)
+            .post('/api/auth/signin')
+            .send({ email: `a${createdUsers[0].email}`, clearPassword: `${users[0].clearPassword}1234` })
+            .then(checkStatus(401));
     });
 
     // it('creates an auth token', () => {

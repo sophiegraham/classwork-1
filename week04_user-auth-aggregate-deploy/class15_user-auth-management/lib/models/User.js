@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { hash, compare } = require('../util/hashing');
+const { tokenizer } = require('../util/tokenizer');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -34,6 +35,11 @@ userSchema.methods.compare = function(clearPassword) {
     return compare(clearPassword, this.passwordHash);
 };
 
-const User = mongoose.model('User', userSchema);
+userSchema.methods.authToken = function() {
+    const jsonUser = this.toJSON();
+    return tokenizer(jsonUser);
+};
+
+const User = mon3goose.model('User', userSchema);
 
 module.exports = User;

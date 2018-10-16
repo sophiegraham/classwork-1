@@ -13,6 +13,13 @@ module.exports = router
         });
     })
 
-    .post('/singin', (req, res, next) => {
-
+    .post('/signin', (req, res, next) => {
+        const { email, clearPassword } = req.body;
+        User.findOne({ email }).then(user => {
+            // user === null
+            const correctPassword = user && user.compare(clearPassword);
+            if(correctPassword) res.status(200);
+            else res.status(401);
+            res.end();
+        });
     });
