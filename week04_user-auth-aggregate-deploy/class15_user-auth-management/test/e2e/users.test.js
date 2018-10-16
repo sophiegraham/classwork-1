@@ -1,5 +1,7 @@
 const dropCollection = require('./db');
 const User = require('../../lib/models/User');
+const app = require('../../lib/app');
+const request = require('supertest');
 const bcrypt = require('bcryptjs');
 const Chance = require('chance');
 const chance = new Chance();
@@ -35,6 +37,16 @@ describe('user routes', () => {
             expect(user.clearPassword).not.toEqual('testing1234');
             expect(bcrypt.compareSync('testing1234', user.passwordHash));
         });
+    });
+
+    it('creates a user on signup', () => {
+        return request(app)
+            .post('/api/auth/signup')
+            .send({ name: 'ryan', email: 'ryan@ryan.com', clearPassword: 'testing1234' })
+            .then(({ body: user }) => {
+                // const user = res.body
+                expect(user).toEqual({ _id: expect.any(String), name: 'ryan', email: 'ryan@ryan.com' });
+            });
     });
 
     // it('compares passwords', () => {

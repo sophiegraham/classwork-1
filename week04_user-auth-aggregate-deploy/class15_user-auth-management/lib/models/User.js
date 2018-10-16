@@ -12,6 +12,13 @@ const userSchema = new mongoose.Schema({
         unique: true
     },
     passwordHash: String
+}, {
+    toJSON: {
+        transform: function(doc, ret) {
+            delete ret.__v;
+            delete ret.passwordHash;
+        }
+    }
 });
 
 userSchema.virtual('clearPassword').set(function(password) {

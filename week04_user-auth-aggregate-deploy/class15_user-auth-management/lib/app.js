@@ -10,11 +10,11 @@ app.use(morgan('dev', {
     }
 }));
 
-const auth = require('./routes/auth');
-app.use('/api/auth', auth);
-
 app.use(express.static('public'));
 app.use(express.json());
+
+const auth = require('./routes/auth');
+app.use('/api/auth', auth);
 
 app.use((req, res) => {
     console.log('This is 404');
