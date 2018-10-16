@@ -40,6 +40,6 @@ userSchema.methods.authToken = function() {
     return tokenizer(jsonUser);
 };
 
-const User = mon3goose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
