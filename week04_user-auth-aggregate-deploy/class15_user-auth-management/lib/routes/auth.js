@@ -11,4 +11,8 @@ module.exports = router
         }).then(user => {
             res.json(user);
         });
+    })
+
+    .post('/singin', (req, res, next) => {
+
     });
