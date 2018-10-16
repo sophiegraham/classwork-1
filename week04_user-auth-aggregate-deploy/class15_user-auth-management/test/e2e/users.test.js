@@ -49,16 +49,16 @@ describe('user routes', () => {
             });
     });
 
-    // it('compares passwords', () => {
-    //     const validPassword = users[0].password;
-    //     const invalidPassword = `${validPassword}1234`;
+    it('compares passwords', () => {
+        const validPassword = users[0].clearPassword;
+        const invalidPassword = `${validPassword}1234`;
 
-    //     const validCompare = createdUsers[0].compare(validPassword);
-    //     const invalidCompare = createdUsers[0].compare(invalidPassword);
+        const validCompare = createdUsers[0].compare(validPassword);
+        const invalidCompare = createdUsers[0].compare(invalidPassword);
 
-    //     expect(validCompare).toBeTruthy();
-    //     expect(invalidCompare).toBeFalsy();
-    // });
+        expect(validCompare).toBeTruthy();
+        expect(invalidCompare).toBeFalsy();
+    });
 
     // it('creates an auth token', () => {
     //     return createdUsers[0].authToken()

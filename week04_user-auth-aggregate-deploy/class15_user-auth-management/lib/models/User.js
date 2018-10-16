@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { hash } = require('../util/hashing');
+const { hash, compare } = require('../util/hashing');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -29,6 +29,10 @@ userSchema.pre('save', function(next) {
     this.passwordHash = hash(this._tempPassword);
     next();
 });
+
+userSchema.methods.compare = function(clearPassword) {
+    return compare(clearPassword, this.passwordHash);
+};
 
 const User = mongoose.model('User', userSchema);
 
