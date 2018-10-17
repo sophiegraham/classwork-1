@@ -6,7 +6,7 @@ const tokenize = payload => {
 };
 
 const untokenize = token => {
-    return decode(token);
+    return decode(token).payload;
 };
 
 module.exports = {

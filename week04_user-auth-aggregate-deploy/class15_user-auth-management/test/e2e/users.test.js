@@ -13,6 +13,13 @@ const checkStatus = statusCode => res => {
 
 const checkOk = res => checkStatus(200)(res);
 
+const withToken = user => {
+    return request(app)
+        .post('/api/auth/signin')
+        .send({ email: `${user.email}`, clearPassword: `${user.clearPassword}` })
+        .then(({ body }) => body.token);
+};
+
 describe('user routes', () => {
     const users = Array.apply(null, { length: 1 })
         .map(() => ({ name: chance.name(), clearPassword: chance.word(), email: chance.email() }));
@@ -70,7 +77,11 @@ describe('user routes', () => {
         return request(app)
             .post('/api/auth/signin')
             .send({ email: createdUsers[0].email, clearPassword: users[0].clearPassword })
-            .then(checkOk);
+            .then(res => {
+                checkOk(res);
+
+                expect(res.body.token).toEqual(expect.any(String));
+            });
     });
 
     it('rejects signing in a bad user', () => {
@@ -83,8 +94,21 @@ describe('user routes', () => {
     it('rejects signing in a user with bad email', () => {
         return request(app)
             .post('/api/auth/signin')
-            .send({ email: `a${createdUsers[0].email}`, clearPassword: `${users[0].clearPassword}1234` })
+            .send({ email: `${createdUsers[0].email}`, clearPassword: `${users[0].clearPassword}1234` })
             .then(checkStatus(401));
+    });
+
+    it('verifies a signed in user', () => {
+        return withToken(users[0])
+            .then(token => {
+                return request(app)
+                    .get('/api/auth/verify')
+                    .set('Authorization', `Bearer ${token}`)
+                    .then(res => {
+                        expect(res.body).toEqual({ success: true });
+                    });
+            });
+
     });
 
     // it('creates an auth token', () => {

@@ -10,6 +10,6 @@ describe('tokenizer', () => {
         const token = tokenize({ name: 'ryan' });
         const decodedToken = untokenize(token);
 
-        expect(decodedToken.payload).toEqual({ name: 'ryan' });
+        expect(decodedToken).toEqual({ name: 'ryan' });
     });
 });
