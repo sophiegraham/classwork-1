@@ -18,8 +18,8 @@
 
 ### Mongoose
 
-* select
 * lean
+* select
 * where
 * count
 

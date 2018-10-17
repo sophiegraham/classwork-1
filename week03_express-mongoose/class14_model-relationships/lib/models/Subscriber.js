@@ -1,15 +1,13 @@
 const mongoose = require('mongoose');
+const EventTypes = require('./EventTypes');
 
 const subscriberSchema = new mongoose.Schema({
-    type: {
+    events: [{
         type: String,
-        enum: ['purchase', 'shipped', 'returned', 'complete'],
+        enum: EventTypes,
         required: true
-    },
-    callbacks: {
-        type: [String],
-        default: []
-    }
+    }],
+    callbacks: [String]
 });
 
 const Subscriber = mongoose.model('Subscriber', subscriberSchema);

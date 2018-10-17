@@ -1,5 +1,7 @@
 # Exercise 1 - Create an express query endpoint
 
+Use `npm run test:watch` to see your tests.
+
 ## Query Quotes
 
 1. `GET /quote` finds all quotes

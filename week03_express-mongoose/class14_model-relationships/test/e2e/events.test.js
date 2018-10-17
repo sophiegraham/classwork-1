@@ -4,12 +4,13 @@ const app = require('../../lib/app');
 const Chance = require('chance');
 const chance = new Chance();
 
-xdescribe('event pub/sub API', () => {
+describe('event pub/sub API', () => {
     let events = Array.apply(null, { length: 100 }).map(() => {
         return {
             type: 'purchase',
             customerId: chance.guid({ version: 4 }),
-            purchaseId: chance.guid({ version: 4 })
+            purchaseId: chance.guid({ version: 4 }),
+            publishedAt: chance.date()
         };
     });
     let createdEvents;
@@ -37,7 +38,8 @@ xdescribe('event pub/sub API', () => {
             .send({
                 type: 'purchase',
                 customerId: '1234',
-                purchaseId: '5678'
+                purchaseId: '5678',
+                publishedAt: chance.date()
             })
             .then(res => {
                 expect(res.body).toEqual({
@@ -45,7 +47,8 @@ xdescribe('event pub/sub API', () => {
                     __v: expect.any(Number),
                     type: 'purchase',
                     customerId: '1234',
-                    purchaseId: '5678'
+                    purchaseId: '5678',
+                    publishedAt: expect.any(String)
                 });
             });
     });
